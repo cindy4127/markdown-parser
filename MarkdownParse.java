@@ -17,15 +17,9 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            // boolean flag = markdown.startsWith("!");
-            // //if there are no links, then exit the loop
-           if ((openBracket==-1) ||(openParen == -1)){
-                break;
-            } 
-            else {       
-                toReturn.add(markdown.substring(openParen + 1, closeParen));
-                currentIndex = closeParen + 1;
-            }
+            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            currentIndex = closeParen + 1;
+            
             
         }
         return toReturn;
