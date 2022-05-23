@@ -18,7 +18,12 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
             boolean flag = markdown.startsWith("!");
-        
+            if (markdown.contains(" ")){
+                String brackets = markdown.substring(openBracket,closeBracket);
+                String paren = markdown.substring(openParen + 1,closeParen);
+                toReturn.add(paren);
+                break;
+            } 
             //if there are no links, then exit the loop
             if ((openBracket==-1) ||(openParen == -1)){
                 break;
@@ -30,8 +35,6 @@ public class MarkdownParse {
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
                 currentIndex = closeParen + 1;
             }
-            
-            
         }
         return toReturn;
     }
